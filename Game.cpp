@@ -78,51 +78,51 @@ void Game::PlayerInput()
 bool Game::CheckWinner(char Player_To_Check)
 {
 	//win conditions that use the 1,1 of the board
-	if (Board[1][1] == Player_To_Check) {                      //X00
+	if (Board[1][1] == Player_To_Check) {                          //X00
 		if (Board[0][0] == Player_To_Check) {                  //0X0
-			if (Board[2][2] == Player_To_Check) {              //00X
+			if (Board[2][2] == Player_To_Check) {          //00X
 				return true;
 			}
 		}
 		if (Board[0][1] == Player_To_Check) {                  //0X0
-			if (Board[2][1] == Player_To_Check) {              //0X0
-				return true;                                   //0X0
+			if (Board[2][1] == Player_To_Check) {          //0X0
+				return true;                           //0X0
 			}
 		}
 		if (Board[1][0] == Player_To_Check) {                  //000
-			if (Board[1][2] == Player_To_Check) {              //XXX 
-				return true;                                   //000
+			if (Board[1][2] == Player_To_Check) {          //XXX 
+				return true;                           //000
 			}
 		}
 		if (Board[0][2] == Player_To_Check) {                  //00X
-			if (Board[2][0] == Player_To_Check) {              //0X0
-				return true;                                   //X00
+			if (Board[2][0] == Player_To_Check) {          //0X0
+				return true;                           //X00
 			}
 		}
 	}
 	//win conditions through 0,2
 	if (Board[0][2] == Player_To_Check) {                      //XXX
-		if (Board[0][1] == Player_To_Check) {                  //000
-			if (Board[0][0] == Player_To_Check) {              //000
+		if (Board[0][1] == Player_To_Check) {              //000
+			if (Board[0][0] == Player_To_Check) {      //000
 				return true;
 			}
 		}
 		if (Board[1][2] == Player_To_Check) {                  //00X
-			if (Board[2][2] == Player_To_Check) {              //00X
-				return true;                                   //00X
+			if (Board[2][2] == Player_To_Check) {          //00X
+				return true;                           //00X
 			}
 		}
 	}
 	//win condition through 2,0
 	if (Board[2][0] == Player_To_Check) {                      //000
-		if (Board[2][1] == Player_To_Check) {                  //000
-			if (Board[2][2] == Player_To_Check) {              //XXX
+		if (Board[2][1] == Player_To_Check) {              //000
+			if (Board[2][2] == Player_To_Check) {      //XXX
 				return true;
 			}
 		}
 		if (Board[1][0] == Player_To_Check) {                  //X00
-			if (Board[0][0] == Player_To_Check) {              //X00
-				return true;                                   //X00
+			if (Board[0][0] == Player_To_Check) {          //X00
+				return true;                           //X00
 			}
 		}
 	}
@@ -183,7 +183,7 @@ void PvE::AIChoose(char Character_Self, char Character_Opponent, char Character_
 
 		if (Board[1][1] == Character_Opponent) {                                                                         //check if middle square is player owned
 			if (Board[1][0] == Character_Opponent) {                                                                                      //prevent 000        fill in 1,2
-				if (Board[1][2] == Character_Default) { Board[1][2] = Character_Self; goto Chosen; }                                      //        XXX 
+				if (Board[1][2] == Character_Default) { Board[1][2] = Character_Self; goto Chosen; }                                  //        XXX 
 			}                                                                                                                             //        000  
 											                                                       
 			if (Board[1][2] == Character_Opponent) { if (Board[1][0] == Character_Default) { Board[1][0] = Character_Self; goto Chosen; } }  //prevent 000    fill in 1,0
@@ -251,11 +251,11 @@ void PvE::AIChoose(char Character_Self, char Character_Opponent, char Character_
 	//tactics
 	if (Board[1][1] == Character_Default) { Board[1][1] = Character_Self; goto Chosen; }                                //1,1
 	if (Board[1][1] == Character_Self) {
-		if (Board[0][0] != Character_Opponent && Board[2][2] != Character_Opponent) {               //O00
+		if (Board[0][0] != Character_Opponent && Board[2][2] != Character_Opponent) {                   //O00
 			if (Board[0][0] == Character_Default) { Board[0][0] = Character_Self; goto Chosen; }    //0O0                 0,0
 			if (Board[2][2] == Character_Default) { Board[2][2] = Character_Self; goto Chosen; }    //00O                 2,2
 		}
-        if (Board[0][0] == Character_Opponent || Board[2][2] == Character_Opponent) {               //00O
+        if (Board[0][0] == Character_Opponent || Board[2][2] == Character_Opponent) {                           //00O
 			if (Board[0][2] == Character_Default) { Board[0][2] = Character_Self; goto Chosen; }    //0O0                 0,2
 			if (Board[2][0] == Character_Default) { Board[2][0] = Character_Self; goto Chosen; }    //O00                 2,0  
 		}
@@ -276,11 +276,11 @@ void PvE::AIChoose(char Character_Self, char Character_Opponent, char Character_
 			if (Board[2][2] == Character_Default) { Board[2][2] = Character_Self; goto Chosen; }   //2,2
 			break;
 		}
-		if (Board[1][0] != Character_Opponent && Board[2][0] != Character_Opponent){               //O00         
+		if (Board[1][0] != Character_Opponent && Board[2][0] != Character_Opponent){                   //O00         
 			if (Board[1][0] == Character_Default) { Board[1][0] = Character_Self; goto Chosen; }   //O00          1,0
 			if (Board[2][0] == Character_Default) { Board[0][0] = Character_Self; goto Chosen; }   //O00          2,0
 		}
-		if (Board[0][1] == Character_Opponent || Board[0][2] == Character_Opponent) {               //OOO
+		if (Board[0][1] == Character_Opponent || Board[0][2] == Character_Opponent) {                   //OOO
 			if (Board[0][2] == Character_Default) { Board[0][2] = Character_Self; goto Chosen; }    //000                 0,2  
 			if (Board[0][1] == Character_Default) { Board[0][1] = Character_Self; goto Chosen; }    //000                 0,1
 		}
