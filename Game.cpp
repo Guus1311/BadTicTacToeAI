@@ -222,27 +222,27 @@ void PvE::AIChoose(char Character_Self, char Character_Opponent, char Character_
 		}
 		if (Board[2][1] == Character_Opponent) {                                                                            //checks for possible winning combinations involving 2,1
 			if (Board[2][2] == Character_Opponent) { if (Board[2][0] == Character_Default) { Board[2][0] = Character_Self; goto Chosen; } }  //prevent 000    fill in 2,0
-																														 //        000
-																														 //        XXX
+																														                     //        000
+																														                     //        XXX
 			if (Board[0][0] == Character_Opponent) { if (Board[0][2] == Character_Default) { Board[0][2] = Character_Self; goto Chosen; } }  //prevent 000    fill in 2,2
-																														 //        000
-																														 //        XXX
+																														                     //        000
+																														                     //        XXX
 		}
 		if (Board[1][0] == Character_Opponent) {                                                                            //checks for possible winning combinations involving 1,0
 			if (Board[2][0] == Character_Opponent) { if (Board[0][0] == Character_Default) { Board[0][0] = Character_Self; goto Chosen; } }  //prevent X00    fill in 0,0
-																														 //        X00
-																														 //        X00
+																														                     //        X00
+																														                     //        X00
 			if (Board[0][0] == Character_Opponent) { if (Board[2][0] == Character_Default) { Board[2][0] = Character_Self; goto Chosen; } }  //prevent X00    fill in 2,0
-																														 //        X00
-																														 //        X00
+																														                     //        X00
+																														                     //        X00
 		}
 		if (Board[1][2] == Character_Opponent) {                                                                            //checks for possible winning combinations involving 1,2
 			if (Board[0][2] == Character_Opponent) { if (Board[2][2] == Character_Default) { Board[2][2] = Character_Self; goto Chosen; } }  //prevent 00X    fill in 2,2
-																														 //        00X
-																														 //        00X
+																														                     //        00X
+																														                     //        00X
 			if (Board[2][2] == Character_Opponent) { if (Board[0][2] == Character_Default) { Board[0][2] = Character_Self; goto Chosen; } }  //prevent 00X    fill in 0,2
-																														 //        00X
-																														 //        00X
+																														                     //        00X
+																														                     //        00X
 		}
 	}
 
@@ -251,11 +251,11 @@ void PvE::AIChoose(char Character_Self, char Character_Opponent, char Character_
 	//tactics
 	if (Board[1][1] == Character_Default) { Board[1][1] = Character_Self; goto Chosen; }                                //1,1
 	if (Board[1][1] == Character_Self) {
-		if (Board[0][0] != Character_Opponent && Board[2][2] != Character_Opponent) {    //O00
+		if (Board[0][0] != Character_Opponent && Board[2][2] != Character_Opponent) {               //O00
 			if (Board[0][0] == Character_Default) { Board[0][0] = Character_Self; goto Chosen; }    //0O0                 0,0
 			if (Board[2][2] == Character_Default) { Board[2][2] = Character_Self; goto Chosen; }    //00O                 2,2
 		}
-        if (Board[0][0] == Character_Opponent || Board[2][2] == Character_Opponent) {    //00O
+        if (Board[0][0] == Character_Opponent || Board[2][2] == Character_Opponent) {               //00O
 			if (Board[0][2] == Character_Default) { Board[0][2] = Character_Self; goto Chosen; }    //0O0                 0,2
 			if (Board[2][0] == Character_Default) { Board[2][0] = Character_Self; goto Chosen; }    //O00                 2,0  
 		}
@@ -276,11 +276,11 @@ void PvE::AIChoose(char Character_Self, char Character_Opponent, char Character_
 			if (Board[2][2] == Character_Default) { Board[2][2] = Character_Self; goto Chosen; }   //2,2
 			break;
 		}
-		if (Board[1][0] != Character_Opponent && Board[2][0] != Character_Opponent){    //O00         
+		if (Board[1][0] != Character_Opponent && Board[2][0] != Character_Opponent){               //O00         
 			if (Board[1][0] == Character_Default) { Board[1][0] = Character_Self; goto Chosen; }   //O00          1,0
 			if (Board[2][0] == Character_Default) { Board[0][0] = Character_Self; goto Chosen; }   //O00          2,0
 		}
-		if (Board[0][1] == Character_Opponent || Board[0][2] == Character_Opponent) {    //OOO
+		if (Board[0][1] == Character_Opponent || Board[0][2] == Character_Opponent) {               //OOO
 			if (Board[0][2] == Character_Default) { Board[0][2] = Character_Self; goto Chosen; }    //000                 0,2  
 			if (Board[0][1] == Character_Default) { Board[0][1] = Character_Self; goto Chosen; }    //000                 0,1
 		}
