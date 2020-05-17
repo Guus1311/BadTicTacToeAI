@@ -1,3 +1,6 @@
+//main entry point of the program
+
+
 #include<iostream>
 #include"Game.h"
 
