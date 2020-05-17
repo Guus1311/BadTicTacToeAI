@@ -11,7 +11,7 @@ void Game::CreateBoard()                                             //assign de
 	}
 }
 
-void Game::DrawBoard()                                                 //draw board
+void Game::DrawBoard()                                                 
 {
 	for (int i = 0; i < 3; i++) {
 		for (int j = 0; j < 3; j++) {
@@ -138,7 +138,7 @@ void Game::EndingMessage()
 
 //PvE class
 
-void PvE::PvELoop()                           //assembly of PvE game loop 
+void PvE::PvELoop()                           //PvE game  
 {
 	//Game Setup
 	srand(time(NULL));
@@ -154,7 +154,7 @@ void PvE::PvELoop()                           //assembly of PvE game loop
 End:
 	std::cout << "";
 }
-void PvE::EvELoop()                           //assembly of PvE game loop 
+void PvE::EvELoop()                           //EvE  
 {
 	//Game Setup
 	srand(time(NULL));
@@ -340,7 +340,7 @@ void PvE::AiEnding()
 
 
 //PvP class
-void PvP::SwitchPlayer()                             //change CurrentPlayerCharacter 
+void PvP::SwitchPlayer()                            
 {
 	if (CurrentPlayerCharacter == 'X') {
 		CurrentPlayerCharacter = 'O';
