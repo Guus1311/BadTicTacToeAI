@@ -1,3 +1,4 @@
+//the code for the classes
 #include "Game.h"
 
 //Game class
