@@ -143,16 +143,21 @@ void PvE::PvELoop()                           //assembly of PvE game loop
 	srand(time(NULL));
 	CreateBoard();
 	//Game Loop
-	while (Game_Over != true) {
+	while (Game_Over != true && Moves_Done < 8) {
 		PlayerInput();
 		if (CheckWinner(PlayerCharacter) == true) { Game_Over = true; DrawBoard(); EndingMessage(); goto End; }
+		Moves_Done++;
 		AIChoose('O','X','0');
 		DrawBoard();
 		if (CheckWinner(AiCharacter) == true) { Game_Over = true; DrawBoard(); AiEnding(); goto End; }
+		Moves_Done++;
 	}
+	std::cout << "Draw!";
 End:
+	Moves_Done = 0;
 	std::cout << "";
 }
+
 void PvE::EvELoop()                           //assembly of PvE game loop 
 {
 	//Game Setup
@@ -161,15 +166,21 @@ void PvE::EvELoop()                           //assembly of PvE game loop
 
 	DrawBoard();
 	//Game Loop
-	while (true) {
+	while (Moves_Done < 8) {
 		AIChoose(PlayerCharacter, AiCharacter, '0');
 		if (CheckWinner(PlayerCharacter) == true) { DrawBoard(); EndingMessage(); goto End; }
-		AIChoose(AiCharacter, PlayerCharacter, '0');
+
+		Moves_Done++;
 		std::cout << std::endl;
+
+		AIChoose(AiCharacter, PlayerCharacter, '0');
 		if (CheckWinner(AiCharacter) == true) {  DrawBoard(); AiEnding(); goto End; }
 		DrawBoard();
+
+		Moves_Done++;
 	}
 End:
+	Moves_Done = 0;
 	std::cout << "";
 }
 
@@ -357,10 +368,8 @@ void PvE::AiEnding()
 }
 
 
-
-
 //PvP class
-void PvP::SwitchPlayer()                             //change CurrentPlayerCharacter 
+void PvP::SwitchPlayer()                          
 {
 	if (CurrentPlayerCharacter == 'X') {
 		CurrentPlayerCharacter = 'O';
@@ -373,11 +382,17 @@ void PvP::PvPLoop()
 	//Game Setup
 	CreateBoard();
 	//Game Loop
-	while (Game_Over != true) {
+	while (Game_Over != true && Moves_Done < 8) {
 		DrawBoard();
 		PlayerInput();
-		if(CheckWinner(CurrentPlayerCharacter) == true){ Game_Over = true; DrawBoard(); EndingMessage(); }
+		Moves_Done++;
+		if (CheckWinner(CurrentPlayerCharacter) == true) { Game_Over = true; DrawBoard(); EndingMessage(); goto End; }
 		SwitchPlayer();
 	}
+
+	std::cout << "Draw!\n";
+	End:
+	Game_Over = false;
+	Moves_Done = 0;
 }
 

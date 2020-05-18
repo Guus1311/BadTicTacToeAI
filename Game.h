@@ -1,5 +1,3 @@
-//header file for the different classes
-
 #pragma once
 #include <iostream>
 #include <ctime>
@@ -9,6 +7,7 @@ protected:
 	char Board[3][3];                             //the board
 	char CurrentPlayerCharacter = 'X';            //contains the character associated with the current player
 	bool Game_Over = false;                       //Game state
+	int Moves_Done = 0;                           //counts how many moves have been done
 
 	//universal functions
 	void CreateBoard();                           //creates default board setup i.e all 0;
